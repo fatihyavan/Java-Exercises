@@ -18,17 +18,16 @@ public class CurrentDisplay implements Observer, Display {
     @Override
     public void update(Observable o, Object arg) {
         if(o instanceof WeatherData){
-            WeatherData weatherData = new WeatherData();
+            WeatherData weatherData = (WeatherData)o;
             this.temperature = weatherData.getTemperature();
             this.pressure = weatherData.getPressure();
             displayData();
-
         }
     }
 
     @Override
     public void displayData() {
         System.out.println("Current Forecasting =>>>");
-        System.out.println("Temperature => " + temperature + "|||| Pressure ==>" + pressure);
+        System.out.println("Temperature => " + this.temperature + "|||| Pressure ==>" + pressure);
     }
 }
